@@ -18,7 +18,7 @@ namespace Assignment3.Tests
         }
 
         [Theory]
-        [InlineData("Goddav, hvordan er din dag?        ", 5)]
+        [InlineData("Goddav, hvordan er din dag?", 5)]
         [InlineData("Godnat, jeg håber du får en god nat!", 8)]
         public void wordCount_returns_correct_amount(String input, int expected)
         {
