@@ -27,5 +27,17 @@ namespace Assignment3.Tests
             var output = product(input1,input2);
             Assert.Equal(expected, output);
         }
+
+        [Theory]
+        [InlineData(5,"5", true)]
+        [InlineData(5,"10", false)]
+        [InlineData(42," 0042",true)]
+        public void returns_number_string_equal(int input1, string input2, bool expected)
+        {
+            bool compareNumberString(int x, string y) => Convert.ToInt32(y) == x;
+
+            var output = compareNumberString(input1,input2);
+            Assert.Equal(expected, output);
+        }
     }
 }
