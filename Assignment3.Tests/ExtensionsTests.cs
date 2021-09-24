@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace BDSA2020.Assignment02.Tests
+namespace Assignment3.Tests
 {
     public class ExtensionsTests
     {
@@ -14,8 +14,17 @@ namespace BDSA2020.Assignment02.Tests
 
             var output = input.isSecure();
 
-            Assert.Equal(output, expected);
+            Assert.Equal(expected, output);
         }
-        
+
+        [Theory]
+        [InlineData("Goddav, hvordan er din dag?        ", 5)]
+        [InlineData("Godnat, jeg håber du får en god nat!", 8)]
+        public void wordCount_returns_correct_amount(String input, int expected)
+        {
+            var output = input.wordCount();
+
+            Assert.Equal(expected, output);
+        }
     }
 }
