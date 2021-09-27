@@ -11,7 +11,7 @@ namespace Assignment3.Tests
         {
             var input = "Rowling";
             var query = new Queries();
-            List<String> expected = new List<string>{"Harry Potter", "Albus Dumbledore", "Lord Voldemort", "Gellert Grindlewald"};
+            List<String> expected = new List<string> { "Harry Potter", "Albus Dumbledore", "Lord Voldemort", "Gellert Grindlewald" };
 
             IEnumerable<String> listOfWizards = query.getWizardsByAuthorExtension(input);
 
@@ -23,7 +23,7 @@ namespace Assignment3.Tests
         {
             var input = "Rowling";
             var query = new Queries();
-            List<String> expected = new List<string>{"Harry Potter", "Albus Dumbledore", "Lord Voldemort", "Gellert Grindlewald"};
+            List<String> expected = new List<string> { "Harry Potter", "Albus Dumbledore", "Lord Voldemort", "Gellert Grindlewald" };
 
             IEnumerable<String> listOfWizards = query.getWizardsByAuthorLinq(input);
 
@@ -46,6 +46,29 @@ namespace Assignment3.Tests
             var expected = 1977;
 
             Assert.Equal(expected, query.getFirstSithLordYearLinq());
+        }
+
+        [Fact]
+        public void Extenstion_ReturnsTupleOfHarryPotter()
+        {
+            //Given
+            
+            //When
+            var output = new Queries().getHarryPotterWizardsTupleExtension();
+            //Then
+            var expected = new List<(string, int?)> { ("Harry Potter", 1997), ("Albus Dumbledore", 1997), ("Lord Voldemort", 1997) };
+            Assert.Equal(expected, output);
+        }
+        [Fact]
+        public void Linq_ReturnsTupleOfHarryPotter()
+        {
+            //Given
+            
+            //When
+            var output = new Queries().getHarryPotterWizardsTupleLinq();
+            //Then
+            var expected = new List<(string, int?)> { ("Harry Potter", 1997), ("Albus Dumbledore", 1997), ("Lord Voldemort", 1997) };
+            Assert.Equal(expected, output);
         }
     }
 }

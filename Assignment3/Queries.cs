@@ -6,7 +6,8 @@ namespace Assignment3
 {
     public class Queries
     {
-        public IEnumerable<string> getWizardsByAuthorExtension(string author){
+        public IEnumerable<string> getWizardsByAuthorExtension(string author)
+        {
             var wizards = Wizard.Wizards.Value;
             return wizards.Where(w => w.Creator.Contains(author)).Select(w => w.Name);
         }
@@ -29,9 +30,22 @@ namespace Assignment3
         {
             var wizards = Wizard.Wizards.Value;
             return (from w in wizards
-                where w.Name.Contains("Darth")
-                orderby w.Year
-                select w.Year).First();
+                    where w.Name.Contains("Darth")
+                    orderby w.Year
+                    select w.Year).First();
+        }
+
+        public IEnumerable<(string, int?)> getHarryPotterWizardsTupleExtension()
+        {
+            var wizards = Wizard.Wizards.Value;
+            return wizards.Where(w => w.Medium.Contains("Harry Potter")).Distinct().Select(w => (w.Name, w.Year));
+        }
+        public IEnumerable<(string, int?)> getHarryPotterWizardsTupleLinq()
+        {
+            var wizards = Wizard.Wizards.Value;
+            return (from w in wizards
+                    where w.Medium.Contains("Harry Potter")
+                    select (w.Name, w.Year)).Distinct();
         }
     }
 }
