@@ -52,7 +52,7 @@ namespace Assignment3.Tests
         public void Extenstion_ReturnsTupleOfHarryPotter()
         {
             //Given
-            
+
             //When
             var output = new Queries().getHarryPotterWizardsTupleExtension();
             //Then
@@ -63,11 +63,33 @@ namespace Assignment3.Tests
         public void Linq_ReturnsTupleOfHarryPotter()
         {
             //Given
-            
+
             //When
             var output = new Queries().getHarryPotterWizardsTupleLinq();
             //Then
             var expected = new List<(string, int?)> { ("Harry Potter", 1997), ("Albus Dumbledore", 1997), ("Lord Voldemort", 1997) };
+            Assert.Equal(expected, output);
+        }
+
+        [Fact]
+        public void Extenstion_returns_wizard_names_grouped_by_creator()
+        {
+            //Given
+            //When
+            var output = new Queries().getListOfWizardsByCreatorExtensions();
+            //Then
+            var expected = new List<string> { "Sauron", "Gandalf", "Lord Voldemort", "Harry Potter", "Gellert Grindlewald", "Albus Dumbledore", "The red woman", "Yoda", "Darth Vader", "Jaina Proudmoore" };
+            Assert.Equal(expected, output);
+        }
+
+        [Fact]
+        public void Linq_returns_wizard_names_grouped_by_creator()
+        {
+            //Given
+            //When
+            var output = new Queries().getListOfWizardsByCreatorLinq();
+            //Then
+            var expected = new List<string> { "Sauron", "Gandalf", "Lord Voldemort", "Harry Potter", "Gellert Grindlewald", "Albus Dumbledore", "The red woman", "Yoda", "Darth Vader", "Jaina Proudmoore" };
             Assert.Equal(expected, output);
         }
     }

@@ -47,5 +47,18 @@ namespace Assignment3
                     where w.Medium.Contains("Harry Potter")
                     select (w.Name, w.Year)).Distinct();
         }
+
+        public IEnumerable<string> getListOfWizardsByCreatorExtensions()
+        {
+            var wizards = Wizard.Wizards.Value;
+            return wizards.OrderByDescending(w => w.Creator).ThenByDescending(w => w.Name).Select(w => w.Name);
+        }
+        public IEnumerable<string> getListOfWizardsByCreatorLinq()
+        {
+            var wizards = Wizard.Wizards.Value;
+            return from w in wizards
+                   orderby w.Creator descending, w.Name descending
+                   select w.Name;
+        }
     }
 }
